@@ -1,0 +1,11 @@
+{
+  "*.{js,ts}": [
+    "pnpm run lint",
+    "prettier --ignore-path .eslintignore --write",
+    "git add --force"
+  ],
+  "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
+    "prettier --ignore-path .eslintignore --parser json --write",
+    "git add --force"
+  ]
+}

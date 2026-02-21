@@ -1,0 +1,11 @@
+{
+  "extends": "@vibemaestro/vibemaestro-nest-config/typescript.nestjs.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "paths": {},
+    "types": ["node"],
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": "./src"
+  }
+}
