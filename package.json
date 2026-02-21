@@ -1,0 +1,71 @@
+{
+  "name": "@vibemaestro/prisma-extensions",
+  "version": "0.0.1",
+  "description": "Vibemaestro Prisma Extensions",
+  "author": "Thành Lê (thanhlcm90@gmail.com)",
+  "homepage": "https://github.com/vibemaestro/prisma-extensions#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibemaestro/prisma-extensions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vibemaestro/prisma-extensions/issues"
+  },
+  "keywords": [
+    "vibemaestro",
+    "node",
+    "prisma",
+    "prisma-client",
+    "prisma-extension"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build:swc": "swc src -d dist --copy-files --strip-leading-paths",
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "build": "run-p build:*",
+    "husky": "husky init",
+    "swc:install": "node install-swc.js",
+    "prisma:setup": "prisma generate && prisma migrate deploy && prisma db push",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"src/**/*.ts\" --write",
+    "fix:lint": "eslint src --ext .ts --fix",
+    "test:lint": "eslint src --ext .ts",
+    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
+    "test:spelling": "cspell \"{README.md,.github/*.md,src/**/*.ts}\"",
+    "test:unit": "vitest run",
+    "cov": "run-s prisma:setup cov:istanbul && open-cli coverage/lcov-report/index.html",
+    "cov:istanbul": "vitest run --coverage",
+    "doc": "typedoc",
+    "doc:preview": "run-s doc && open-cli build/docs/index.html",
+    "version": "standard-version",
+    "reset-hard": "git clean -dfx && git reset --hard && npm i",
+    "prepare-release": "run-s reset-hard test cov:check doc:html version doc:publish"
+  },
+  "dependencies": {
+    "@nestjs/common": "11.1.0",
+    "@prisma/client": "7.4.0",
+    "dotenv": "16.5.0"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@prisma/adapter-better-sqlite3": "7.4.1",
+    "@types/node": "22.15.3",
+    "@vibemaestro/vibemaestro-nest-config": "workspace:*",
+    "@vitest/coverage-istanbul": "^4.0.18",
+    "cspell": "^9.6.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "npm-run-all2": "^8.0.4",
+    "nyc": "^17.1.0",
+    "open-cli": "^8.0.0",
+    "prisma": "7.4.0",
+    "standard-version": "^9.5.0",
+    "typedoc": "^0.28.17",
+    "typescript": "5.7.2",
+    "vitest": "4.0.18"
+  }
+}

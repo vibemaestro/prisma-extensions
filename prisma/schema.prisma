@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  posts     PostOnUser[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title      String?
+
+  authors    PostOnUser[]
+}
+
+model PostOnUser {
+  userId Int   
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  postId Int   
+  post   Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@id([userId, postId])
+  @@unique([userId, postId])
+}

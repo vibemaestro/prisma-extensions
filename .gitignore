@@ -1,0 +1,13 @@
+node_modules
+build
+*.log
+coverage
+.DS_Store
+dist
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/tasks.xml
+.*.env
+.eslintcache
+.turbo
+generated

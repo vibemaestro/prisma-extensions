@@ -1,0 +1,16 @@
+{
+  "extends": "@vibemaestro/vibemaestro-nest-config/typescript.nestjs.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "declaration": true,
+    "sourceMap": false,
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
+    "skipLibCheck": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true
+  },
+  "include": ["src/**/*", "src/**/*.d.ts"],
+  "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
+}
